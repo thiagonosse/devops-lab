@@ -13,6 +13,9 @@ jobs:
     name: Terraform Validation
     runs-on: ubuntu-latest
 
+    env:
+      TF_VAR_admin_ip: ${{ secrets.ADMIN_IP }}
+
     defaults:
       run:
         working-directory: terraform
