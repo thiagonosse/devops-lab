@@ -1,4 +1,10 @@
 terraform {
+  backend "s3" {
+    bucket = "devops-lab-tfstate-155638725921"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+  }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
