@@ -1,6 +1,11 @@
 variable "admin_ip" {
   description = "IP público autorizado a acessar SSH"
   type        = string
+
+  validation {
+    condition     = can(cidrhost("${var.admin_ip}/32", 0))
+    error_message = "admin_ip deve ser um endereço IPv4 público válido, por exemplo 45.181.33.250."
+  }
 }
 
 resource "aws_security_group" "web" {
